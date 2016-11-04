@@ -15,15 +15,26 @@ public class Fila {
 	}
 	
 	public Pessoa proximoFila(){
-		Pessoa proximo = null;
+		Pessoa proximo = null;			
 		
-		proximo = verificaGravida();
+		if(pessoas.isEmpty()){
+			return null;
+		}				
 		
-		if(proximo == null)
-			proximo = pessoas.get(0);
+		proximo = verificaIdoso();
 		
-		return proximo;
-	}
+		
+		if(proximo == null){				
+			proximo = verificaGravida();	
+			
+			if(proximo == null){
+				proximo = pessoas.get(0);
+			}
+		}
+		
+		return proximo;		
+		
+	}//fim do Pessoa proximoFila
 	
 	public Pessoa verificaGravida(){
 		
